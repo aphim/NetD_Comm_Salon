@@ -1,0 +1,68 @@
+﻿<!--
+Program:      Netd 3202 Lab 5 Salon Webpage
+Created by:   Jacky Yuan
+Date:         Dec 04, 2020
+Purpose:      Basic website for a hair salon
+Change log:   N/A
+-->
+@model IEnumerable<Netd_Comm_Salon.Models.client>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!--generates a table displaying the list of all clients-->
+<h1>Clients</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.clientID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clientFName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clientLName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clientPhonenumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clientEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clientID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clientFName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clientLName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clientPhonenumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.clientEmail)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.clientID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.clientID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.clientID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

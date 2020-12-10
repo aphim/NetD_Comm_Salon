@@ -1,0 +1,57 @@
+﻿<!--
+Program:      Netd 3202 Lab 5 Salon Webpage
+Created by:   Jacky Yuan
+Date:         Dec 04, 2020
+Purpose:      Basic website for a hair salon
+Change log:   N/A
+-->
+@model Netd_Comm_Salon.Models.client
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!-- generates the form for editing a client's information-->
+<h1>Edit</h1>
+
+<h4>client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="clientID" />
+            <div class="form-group">
+                <label asp-for="clientFName" class="control-label">First Name</label>
+                <input asp-for="clientFName" class="form-control" />
+                <span asp-validation-for="clientFName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="clientLName" class="control-label">Last Name</label>
+                <input asp-for="clientLName" class="form-control" />
+                <span asp-validation-for="clientLName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="clientPhonenumber" class="control-label">Phonenumber</label>
+                <input asp-for="clientPhonenumber" class="form-control" />
+                <span asp-validation-for="clientPhonenumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="clientEmail" class="control-label">Email</label>
+                <input asp-for="clientEmail" class="form-control" />
+                <span asp-validation-for="clientEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

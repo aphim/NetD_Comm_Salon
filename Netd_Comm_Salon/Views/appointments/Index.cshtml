@@ -1,0 +1,57 @@
+﻿<!--
+Program:      Netd 3202 Lab 5 Salon Webpage
+Created by:   Jacky Yuan
+Date:         Dec 04, 2020
+Purpose:      Basic website for a hair salon
+Change log:   N/A
+-->
+\
+@model IEnumerable<Netd_Comm_Salon.Models.appointment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!--Generates the table that displays all appointments-->
+<h1>Book an Appointment</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.appointmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stylist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.client)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.appointmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stylist.fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.client.clientID)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.appointmentID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.appointmentID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.appointmentID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

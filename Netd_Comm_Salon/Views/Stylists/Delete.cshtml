@@ -1,0 +1,47 @@
+﻿<!--
+Program:      Netd 3202 Lab 5 Salon Webpage
+Created by:   Jacky Yuan
+Date:         Dec 04, 2020
+Purpose:      Basic website for a hair salon
+Change log:   N/A
+-->
+@model Netd_Comm_Salon.Models.Stylist
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<!--Generates the page for the confirmation for deleting a stylist-->
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Stylist</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.stylistFName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.stylistFName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.stylistLName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.stylistLName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.stylistExt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.stylistExt)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="stylistID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

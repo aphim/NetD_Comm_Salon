@@ -1,0 +1,56 @@
+﻿<!--
+Program:      Netd 3202 Lab 5 Salon Webpage
+Created by:   Jacky Yuan
+Date:         Dec 04, 2020
+Purpose:      Basic website for a hair salon
+Change log:   N/A
+-->
+@model IEnumerable<Netd_Comm_Salon.Models.Stylist>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!--Generates the table that displays all stylists-->
+<h1>Stylists</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.stylistFName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stylistLName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stylistExt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stylistFName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stylistLName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stylistExt)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.stylistID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.stylistID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.stylistID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

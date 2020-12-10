@@ -1,0 +1,51 @@
+﻿<!--
+Program:      Netd 3202 Lab 5 Salon Webpage
+Created by:   Jacky Yuan
+Date:         Dec 04, 2020
+Purpose:      Basic website for a hair salon
+Change log:   N/A
+-->
+@model Netd_Comm_Salon.Models.Stylist
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!-- Generates the form for creating a new stylist-->
+<h1>Create</h1>
+
+<h4>Stylist</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="stylistFName" class="control-label">First Name</label>
+                <input asp-for="stylistFName" class="form-control" />
+                <span asp-validation-for="stylistFName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="stylistLName" class="control-label">Last Name</label>
+                <input asp-for="stylistLName" class="form-control" />
+                <span asp-validation-for="stylistLName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="stylistExt" class="control-label">Extension</label>
+                <input asp-for="stylistExt" class="form-control" />
+                <span asp-validation-for="stylistExt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
